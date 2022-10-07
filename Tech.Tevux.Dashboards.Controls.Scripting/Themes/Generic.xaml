@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ScriptButton.xaml" />
+        <ResourceDictionary Source="ScriptEditor.xaml" />
+        <ResourceDictionary Source="ScriptIndicator.xaml" />
+        <ResourceDictionary Source="ScriptNud.xaml" />
+        <ResourceDictionary Source="ScriptOutput.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
