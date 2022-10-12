@@ -5,31 +5,23 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Tech.Tevux.Dashboards.Controls</RootNamespace>
-    <Version>0.19.0</Version>
-    <Company>Tevux Technologies, MB</Company>
-    <Copyright>© 2022 Tevux Technologies, MB</Copyright>
+    <Version>0.19.0-preview.0</Version>
+    <Company>Tevux Technologies</Company>
+    <Copyright>© 2022 Tevux Technologies</Copyright>
     <Title>Scripting controls for Tevux Dashboards</Title>
-    <Authors>DevBot9</Authors>
-    <RepositoryUrl>https://www.github.com/tevux-tech/tech-tevux-dashboards-controls-scripting</RepositoryUrl>
-    <PackageProjectUrl>https://www.github.com/tevux-tech/tech-tevux-dashboards-controls-scripting</PackageProjectUrl>
+    <Authors>devbotas</Authors>
     <Description>Provides C# scripting subsystem.</Description>
-    <NuspecFile>Tech.Tevux.Dashboards.Controls.Scripting.nuspec</NuspecFile>
-    <NuspecProperties>
-      version=$(Version);
-      id=$(AssemblyName);
-      copyright=$(Copyright);
-      title=$(Title);
-      authors=$(Authors);
-      description=$(Description)
-    </NuspecProperties>
+    <RepositoryUrl>https://github.com/tevux-tech/tech-tevux-dashboards-controls-scripting</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/tevux-tech/tech-tevux-dashboards-controls-scripting</PackageProjectUrl>
+
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
 
     <!--Configuring source Link-->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <DebugType>embedded</DebugType>
-    <!-- End -->
+    <!--End-->
+    <RootNamespace>Tech.Tevux.Dashboards.Controls</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
@@ -97,7 +89,7 @@
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
     <PackageReference Include="Tevux.Software.Helpers" Version="0.18.0" />
-    <PackageReference Include="Tevux.Tools.RepositorySettings" Version="1.1.0">
+    <PackageReference Include="Tevux.Tools.RepositorySettings" Version="1.2.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
