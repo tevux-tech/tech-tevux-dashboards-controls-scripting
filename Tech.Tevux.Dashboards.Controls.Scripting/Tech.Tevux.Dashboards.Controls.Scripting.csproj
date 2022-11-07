@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <OutputType>Exe</OutputType>
-    <Version>0.21.0</Version>
+    <Version>0.22.0</Version>
     <Company>Tevux Technologies</Company>
     <Copyright>© 2022 Tevux Technologies</Copyright>
     <Title>Scripting controls for Tevux Dashboards</Title>
@@ -84,12 +84,12 @@
     <PackageReference Include="Microsoft.CodeAnalysis.Scripting.Common" Version="4.1.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.1.0" />
     <PackageReference Include="NLog" Version="4.7.15" />
-    <PackageReference Include="Tech.Tevux.Dashboards.Controls.Base" Version="0.20.0-preview.1" />
-    <PackageReference Include="Tevux.Dashboards.Abstractions" Version="0.39.0-preview.1">
+    <PackageReference Include="Tech.Tevux.Dashboards.Controls.Base" Version="0.22.0" />
+    <PackageReference Include="Tevux.Dashboards.Abstractions" Version="0.40.0">
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
     <PackageReference Include="Tevux.Software.Helpers" Version="0.18.0" />
-    <PackageReference Include="Tevux.Tools.RepositorySettings" Version="1.2.0">
+    <PackageReference Include="Tevux.Tools.RepositorySettings" Version="1.4.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
