@@ -62,8 +62,7 @@ public partial class ScriptButton : ControlBase {
         if (LibrarySupervisor.Instance.PluginDatas.ContainsKey(libraryContext) == false) {
             errorMessage = $"Library set \"{libraryContext}\" is not loaded.";
             _log.Error(errorMessage, libraryContext);
-        }
-        else {
+        } else {
             var contextShortcut = LibrarySupervisor.Instance.PluginDatas[libraryContext].AssemblyContext;
             var scriptContextShortcut = LibrarySupervisor.Instance.PluginDatas[libraryContext].ScriptContext;
             errorMessage = "";
@@ -88,21 +87,17 @@ public partial class ScriptButton : ControlBase {
                     _log.Info("ScriptContext has been found.");
                     var zeScript = CSharpScript.Create(script, options, scriptContextShortcut, funkyLoader);
                     zeScript.RunAsync(Activator.CreateInstance(scriptContextShortcut)).Wait();
-                }
-                else {
+                } else {
                     _log.Info("ScriptContext has not been found, continuing without it.");
                     var zeScript = CSharpScript.Create(script, options, null, funkyLoader);
                     zeScript.RunAsync().Wait();
                 }
-            }
-            catch (TaskCanceledException) {
+            } catch (TaskCanceledException) {
                 // Swallowing.
-            }
-            catch (CompilationErrorException ex) {
+            } catch (CompilationErrorException ex) {
                 _log.Error(ex, "Script cannot compile.");
                 errorMessage = ex.Message;
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 _log.Error(ex, "Script execution error.");
                 errorMessage = ex.Message;
             }

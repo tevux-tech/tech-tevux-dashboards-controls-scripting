@@ -42,8 +42,7 @@ public partial class ScriptIndicator : OutputControlBase {
         Dispatcher.Invoke(() => {
             if (AutoConverter.TryGetAsNumber(message.Value, out var number)) {
                 ApplyAppearanceRules(number);
-            }
-            else if (AutoConverter.TryGetAsText(message.Value, out var text)) {
+            } else if (AutoConverter.TryGetAsText(message.Value, out var text)) {
                 ApplyAppearanceRules(text);
             }
         });

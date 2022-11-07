@@ -7,8 +7,7 @@ public class AutoConverter {
         if (input is string inputString) {
             inputAsText = inputString;
             success = true;
-        }
-        else {
+        } else {
             inputAsText = "";
         }
 
@@ -21,24 +20,19 @@ public class AutoConverter {
         if (input is float floatValue) {
             inputAsNumber = (decimal)floatValue;
             success = true;
-        }
-        else if (input is double doubleValue) {
+        } else if (input is double doubleValue) {
             inputAsNumber = (decimal)doubleValue;
             success = true;
-        }
-        else if (input is byte byteValue) {
+        } else if (input is byte byteValue) {
             inputAsNumber = byteValue;
             success = true;
-        }
-        else if (input is int intValue) {
+        } else if (input is int intValue) {
             inputAsNumber = intValue;
             success = true;
-        }
-        else if (input is long longValue) {
+        } else if (input is long longValue) {
             inputAsNumber = longValue;
             success = true;
-        }
-        else {
+        } else {
             inputAsNumber = 0;
         }
 
