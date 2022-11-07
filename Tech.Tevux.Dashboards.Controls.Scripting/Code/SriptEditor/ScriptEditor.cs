@@ -101,7 +101,7 @@ public partial class ScriptEditor : Control, IDisposable {
     public override void OnApplyTemplate() {
         AvailableContexts = new ObservableCollection<LibraryComboBoxItem>();
         foreach (var context in LibrarySupervisor.Instance.PluginDatas) {
-            AvailableContexts.Add(new LibraryComboBoxItem(context.Key, context.Value.FriendlyName));
+            AvailableContexts.Add(new LibraryComboBoxItem(context.Value.Name.BaseName, context.Value.FriendlyName));
         }
 
         base.OnApplyTemplate();
