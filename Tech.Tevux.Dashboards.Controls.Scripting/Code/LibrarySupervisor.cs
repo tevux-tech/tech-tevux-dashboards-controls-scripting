@@ -29,7 +29,9 @@ public class LibrarySupervisor : ISharedLibraryMessengerInitializer {
     internal void UpdatePluginData(LibraryDataChangedMessage message) {
         PluginDatas.Clear();
         foreach (var context in message.AvailableLibraryData) {
-            PluginDatas.Add(context.Key, context.Value);
+            if (context.Value.ScriptContext is not null) {
+                PluginDatas.Add(context.Key, context.Value);
+            }
         }
 
         // Running a tiny script in the background. This will load C# scripting libraries into memory,

@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <OutputType>Exe</OutputType>
-    <Version>0.23.0-preview.2</Version>
+    <Version>0.23.0-preview.3</Version>
     <Company>Tevux Technologies</Company>
     <Copyright>© 2022 Tevux Technologies</Copyright>
     <Title>Scripting controls for Tevux Dashboards</Title>
@@ -72,7 +72,10 @@
   <ItemGroup>
     <Folder Include="Code\ScriptIndicator\TemplateProperties\" />
   </ItemGroup>
-
+  <ItemGroup>
+    <None Include="..\README.md" Pack="True" PackagePath="\" />
+    <None Include="Resources\tevux-logo-symbol.png" Pack="True" PackagePath="\" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="AvalonEdit" Version="6.1.3.50" />
@@ -84,8 +87,8 @@
     <PackageReference Include="Microsoft.CodeAnalysis.Scripting.Common" Version="4.1.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.1.0" />
     <PackageReference Include="NLog" Version="4.7.15" />
-    <PackageReference Include="Tech.Tevux.Dashboards.Controls.Base" Version="0.23.0-preview.4" />
-    <PackageReference Include="Tevux.Dashboards.Abstractions" Version="0.41.0-preview.4">
+    <PackageReference Include="Tech.Tevux.Dashboards.Controls.Base" Version="0.23.0-preview.10" />
+    <PackageReference Include="Tevux.Dashboards.Abstractions" Version="0.41.0-preview.15">
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
     <PackageReference Include="Tevux.Software.Helpers" Version="0.18.0" />
