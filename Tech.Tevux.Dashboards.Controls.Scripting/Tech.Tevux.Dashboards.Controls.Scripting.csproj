@@ -89,12 +89,9 @@
     <PackageReference Include="Microsoft.CodeAnalysis.Scripting.Common" Version="4.1.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.1.0" />
     <PackageReference Include="NLog" Version="4.7.15" />
-    <PackageReference Include="Tech.Tevux.Dashboards.Controls.Base" Version="0.23.0-preview.10" />
-    <PackageReference Include="Tevux.Dashboards.Abstractions" Version="0.41.0-preview.15">
-      <ExcludeAssets>runtime</ExcludeAssets>
-    </PackageReference>
+    <PackageReference Include="Tech.Tevux.Dashboards.Controls.Base" Version="0.23.0-preview.15" />
     <PackageReference Include="Tevux.Software.Helpers" Version="0.18.0" />
-    <PackageReference Include="Tevux.Tools.RepositorySettings" Version="1.4.4">
+    <PackageReference Include="Tevux.Tools.RepositorySettings" Version="1.5.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
