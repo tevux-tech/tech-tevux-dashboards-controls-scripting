@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" xmlns:local="clr-namespace:Tech.Tevux.Dashboards.Controls"
-                    >
+                    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" xmlns:local="clr-namespace:Tech.Tevux.Dashboards.Controls">
     <Style TargetType="{x:Type local:ScriptNud}">
         <Setter Property="Template">
             <Setter.Value>
@@ -14,8 +13,7 @@
                             <dxmvvm:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
                         </Grid.Resources>
                         <Label HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                               Background="Red" Foreground="White"
-                               >
+                               Background="Red" Foreground="White">
                             <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ErrorMessage}" TextWrapping="WrapWithOverflow" />
                             <Label.Style>
                                 <Style TargetType="Label">
