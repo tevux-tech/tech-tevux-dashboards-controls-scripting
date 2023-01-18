@@ -6,6 +6,10 @@ public partial class ScriptNud {
         typeof(decimal),
         typeof(ScriptNud),
         new PropertyMetadata(0m));
+
+    [ExposedOption(OptionType.Number)]
+    [DisplayName("Value")]
+    [Category("Main")]
     public decimal ParameterValue {
         get { return (decimal)GetValue(ParameterValueProperty); }
         set { SetValue(ParameterValueProperty, value); }
