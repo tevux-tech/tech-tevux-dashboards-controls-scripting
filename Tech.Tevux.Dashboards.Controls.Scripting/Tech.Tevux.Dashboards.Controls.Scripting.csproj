@@ -6,7 +6,7 @@
     <NoWarn>CS1591</NoWarn>
     <UseWPF>true</UseWPF>
     <OutputType>Library</OutputType>
-    <Version>0.23.0-preview.12</Version>
+    <Version>0.23.0-preview.14</Version>
     <Company>Tevux Technologies</Company>
     <Copyright>© 2022 Tevux Technologies</Copyright>
     <Title>Scripting controls for Tevux Dashboards</Title>
