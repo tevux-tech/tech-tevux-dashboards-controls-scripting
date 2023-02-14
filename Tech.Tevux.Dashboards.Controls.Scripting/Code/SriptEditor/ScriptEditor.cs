@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
@@ -99,11 +98,6 @@ public partial class ScriptEditor : Control, IDisposable {
 
     public record class LibraryComboBoxItem(string Key, string FriendlyName);
     public override void OnApplyTemplate() {
-        AvailableContexts = new ObservableCollection<LibraryComboBoxItem>();
-        foreach (var context in LibrarySupervisor.Instance.PluginDatas) {
-            AvailableContexts.Add(new LibraryComboBoxItem(context.Value.Name.BaseName, context.Value.FriendlyName));
-        }
-
         base.OnApplyTemplate();
 
         if (Template.FindName("PART_MainGrid", this) is Grid dataGrid) {

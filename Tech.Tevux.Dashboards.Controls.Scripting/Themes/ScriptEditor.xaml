@@ -17,13 +17,6 @@
                             <Button Width="70"
                                     Command="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ExecuteGuiCommand}"
                                     CommandParameter="format" Content="Format" />
-                            <TextBlock Margin="10,0,5,0" VerticalAlignment="Center"
-                                       Text="Library context:" />
-                            <ComboBox VerticalAlignment="Center"
-                                      DisplayMemberPath="FriendlyName"
-                                      ItemsSource="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=AvailableContexts}"
-                                      SelectedValue="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=LocalSelectedContext, Mode=TwoWay}"
-                                      SelectedValuePath="Key" />
                         </StackPanel>
                         <Grid Grid.Row="1">
                             <Grid.RowDefinitions>

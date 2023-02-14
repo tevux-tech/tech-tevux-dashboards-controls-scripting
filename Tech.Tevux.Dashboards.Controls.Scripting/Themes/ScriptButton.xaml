@@ -33,6 +33,11 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ScriptButton}">
                     <Grid Background="LightYellow">
+                        <Grid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Command="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=CancelExecutionCommand}" Header="Cancel" />
+                            </ContextMenu>
+                        </Grid.ContextMenu>
                         <Button x:Name="PART_MainButton"
                                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                                 Command="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ExecuteCommand}"
