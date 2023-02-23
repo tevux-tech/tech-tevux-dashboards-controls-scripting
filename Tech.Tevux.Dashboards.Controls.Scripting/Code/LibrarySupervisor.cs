@@ -1,7 +1,9 @@
 ﻿
+using System.Runtime.Loader;
+
 namespace Tech.Tevux.Dashboards.Controls;
 
-public class LibrarySupervisor : ISharedLibraryMessengerInitializer {
+public class LibrarySupervisor : ISharedLibraryMessengerConsumer, IAssemblyContextConsumer {
     private bool _isInitialized;
 
     private LibrarySupervisor() {
@@ -9,10 +11,14 @@ public class LibrarySupervisor : ISharedLibraryMessengerInitializer {
     }
 
     public static LibrarySupervisor Instance { get; } = new LibrarySupervisor();
-
+    public AssemblyLoadContext AssemblyLoadContext { get; private set; }
     public ISharedLibraryMessenger GlobalMessenger { get; set; }
 
-    public void Initialize(ISharedLibraryMessenger sharedMessenger) {
+    public void SetAssemblyContext(AssemblyLoadContext loadContext) {
+        AssemblyLoadContext = loadContext;
+    }
+
+    public void SetSharedMessenger(ISharedLibraryMessenger sharedMessenger) {
         if (_isInitialized) { return; }
 
         GlobalMessenger = sharedMessenger;
