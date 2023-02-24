@@ -7,11 +7,11 @@ public class LibrarySupervisor : ISharedLibraryMessengerConsumer, IAssemblyConte
     private bool _isInitialized;
 
     private LibrarySupervisor() {
-        GlobalMessenger = new EmptyPluginMessenger();
+        GlobalMessenger = new EmptyLibraryMessenger();
     }
 
     public static LibrarySupervisor Instance { get; } = new LibrarySupervisor();
-    public AssemblyLoadContext AssemblyLoadContext { get; private set; }
+    public AssemblyLoadContext AssemblyLoadContext { get; private set; } = AssemblyLoadContext.Default;
     public ISharedLibraryMessenger GlobalMessenger { get; set; }
 
     public void SetAssemblyContext(AssemblyLoadContext loadContext) {

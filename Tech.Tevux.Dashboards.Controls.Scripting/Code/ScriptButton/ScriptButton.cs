@@ -19,8 +19,8 @@ public partial class CSharpScriptButton : CSharpScriptControlBase {
     public override void OnApplyTemplate() {
         base.OnApplyTemplate();
 
-        _assemblyLoadContext = LibrarySupervisor.Instance.AssemblyLoadContext;
-        _scriptContext = (ScriptContextBase)Activator.CreateInstance(typeof(ScriptContext));
+        AssemblyLoadContext = LibrarySupervisor.Instance.AssemblyLoadContext;
+        ScriptContext = (ScriptContextBase)Activator.CreateInstance(typeof(ScriptContext))!;
     }
 
     protected override void Dispose(bool isCalledManually) {
