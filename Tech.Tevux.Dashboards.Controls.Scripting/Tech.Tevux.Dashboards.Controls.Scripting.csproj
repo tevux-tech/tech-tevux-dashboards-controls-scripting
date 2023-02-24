@@ -88,8 +88,5 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\tech-tevux-dashboards-controls-base\Tech.Tevux.Dashboards.Controls.Base\Tech.Tevux.Dashboards.Controls.Base.csproj" />
-  </ItemGroup>
 
 </Project>
