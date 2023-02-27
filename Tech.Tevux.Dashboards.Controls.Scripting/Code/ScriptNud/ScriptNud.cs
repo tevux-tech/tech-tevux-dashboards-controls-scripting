@@ -10,6 +10,7 @@ namespace Tech.Tevux.Dashboards.Controls;
 [HiddenExposedOption(nameof(Rules))]
 [HiddenExposedOption(nameof(Alignment))]
 [Category("Scripting")]
+[DisplayName("Script numeric up-down")]
 public partial class ScriptNud : InputOutputControlBase {
     private bool _isDisposed;
 

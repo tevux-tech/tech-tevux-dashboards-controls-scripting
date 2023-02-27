@@ -6,6 +6,7 @@ namespace Tech.Tevux.Dashboards.Controls;
 
 [DashboardControl]
 [Category("Scripting")]
+[DisplayName("C# script button (generic)")]
 public partial class CSharpScriptButton : CSharpScriptControlBase {
     private static readonly Logger _log = LogManager.GetCurrentClassLogger();
     private readonly CancellationTokenSource _globalCts = new();

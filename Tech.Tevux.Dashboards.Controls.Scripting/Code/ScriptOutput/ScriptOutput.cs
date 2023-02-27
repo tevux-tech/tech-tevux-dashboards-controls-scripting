@@ -9,9 +9,10 @@ namespace Tech.Tevux.Dashboards.Controls;
 [HiddenExposedOption(nameof(Alignment))]
 [HiddenExposedOption(nameof(Caption))]
 [Category("Scripting")]
+[DisplayName("Script output")]
 public partial class ScriptOutput : ControlBase {
     private readonly StringBuilder _textBuilder = new();
-    private bool _isDisposed = false;
+    private bool _isDisposed;
     private TextBox? _textBox;
 
     static ScriptOutput() {
@@ -55,6 +56,8 @@ public partial class ScriptOutput : ControlBase {
             // Free unmanaged resources here and set large fields to null.
             _isDisposed = true;
         }
+
+        base.Dispose(isCalledManually);
     }
     private void HandleSetValueMessage(SetValueMessage message) {
         _textBuilder.AppendLine(message.Value.ToString());
