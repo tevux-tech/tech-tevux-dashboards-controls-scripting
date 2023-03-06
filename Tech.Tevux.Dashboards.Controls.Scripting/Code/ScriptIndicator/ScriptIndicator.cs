@@ -2,8 +2,9 @@
 
 [DashboardControl]
 [Category("Scripting")]
+[DisplayName("Script indicator")]
 public partial class ScriptIndicator : OutputControlBase {
-    private bool _isDisposed = false;
+    private bool _isDisposed;
 
     static ScriptIndicator() {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(ScriptIndicator), new FrameworkPropertyMetadata(typeof(ScriptIndicator)));
@@ -36,6 +37,8 @@ public partial class ScriptIndicator : OutputControlBase {
             // Free unmanaged resources here and set large fields to null.
             _isDisposed = true;
         }
+
+        base.Dispose(isCalledManually);
     }
 
     private void HandleSetValueMessage(SetValueMessage message) {

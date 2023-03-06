@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:base="clr-namespace:Tech.Tevux.Dashboards.Controls;assembly=Tech.Tevux.Dashboards.Controls.Base" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Tech.Tevux.Dashboards.Controls" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    mc:Ignorable="d">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Tech.Tevux.Dashboards.Controls.Base;Component/Themes/CSharpScriptControlBase.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style BasedOn="{StaticResource {x:Type base:CSharpScriptControlBase}}" TargetType="{x:Type local:CSharpScriptButton}" />
+</ResourceDictionary>
