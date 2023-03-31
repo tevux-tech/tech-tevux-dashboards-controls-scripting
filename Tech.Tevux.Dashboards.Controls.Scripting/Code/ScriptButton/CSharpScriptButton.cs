@@ -4,7 +4,6 @@ using NLog;
 
 namespace Tech.Tevux.Dashboards.Controls;
 
-[DashboardControl]
 [Category("Scripting")]
 [DisplayName("C# script button (generic)")]
 public partial class CSharpScriptButton : CSharpScriptControlBase {
@@ -20,7 +19,7 @@ public partial class CSharpScriptButton : CSharpScriptControlBase {
     public override void OnApplyTemplate() {
         base.OnApplyTemplate();
 
-        AssemblyLoadContext = LibrarySupervisor.Instance.AssemblyLoadContext;
+        AssemblyLoadContext = MyLibrary.Instance.AssemblyLoadContext;
         ScriptContext = (ScriptContextBase)Activator.CreateInstance(typeof(ScriptContext))!;
     }
 

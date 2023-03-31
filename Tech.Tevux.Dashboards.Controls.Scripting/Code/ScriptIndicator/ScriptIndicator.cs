@@ -1,6 +1,5 @@
 ﻿namespace Tech.Tevux.Dashboards.Controls;
 
-[DashboardControl]
 [Category("Scripting")]
 [DisplayName("Script indicator")]
 public partial class ScriptIndicator : OutputControlBase {
@@ -24,8 +23,8 @@ public partial class ScriptIndicator : OutputControlBase {
     public override void Reconfigure() {
         base.Reconfigure();
 
-        LibrarySupervisor.Instance.GlobalMessenger.Unregister(this);
-        LibrarySupervisor.Instance.GlobalMessenger.Register<SetValueMessage>(this, Id, HandleSetValueMessage);
+        MyLibrary.Instance.GlobalMessenger.Unregister(this);
+        MyLibrary.Instance.GlobalMessenger.Register<SetValueMessage>(this, Id, HandleSetValueMessage);
     }
 
     protected override void Dispose(bool isCalledManually) {
