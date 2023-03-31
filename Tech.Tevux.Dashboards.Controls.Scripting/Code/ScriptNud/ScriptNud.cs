@@ -5,7 +5,6 @@ using MahApps.Metro.Controls;
 
 namespace Tech.Tevux.Dashboards.Controls;
 
-[DashboardControl]
 [HiddenExposedOption(nameof(Caption))]
 [HiddenExposedOption(nameof(Rules))]
 [HiddenExposedOption(nameof(Alignment))]
@@ -47,9 +46,9 @@ public partial class ScriptNud : InputOutputControlBase {
     public override void Reconfigure() {
         base.Reconfigure();
 
-        LibrarySupervisor.Instance.GlobalMessenger.Unregister(this);
-        LibrarySupervisor.Instance.GlobalMessenger.Register<SetValueMessage>(this, Id, HandleSetValueMessage);
-        LibrarySupervisor.Instance.GlobalMessenger.Register<GetValueMessage>(this, Id, HandleGetValueMessage);
+        MyLibrary.Instance.GlobalMessenger.Unregister(this);
+        MyLibrary.Instance.GlobalMessenger.Register<SetValueMessage>(this, Id, HandleSetValueMessage);
+        MyLibrary.Instance.GlobalMessenger.Register<GetValueMessage>(this, Id, HandleGetValueMessage);
     }
 
     protected override void Dispose(bool isCalledManually) {

@@ -4,7 +4,6 @@ using DevBot9.Mvvm;
 
 namespace Tech.Tevux.Dashboards.Controls;
 
-[DashboardControl]
 [TemplatePart(Name = "PART_MainText", Type = typeof(TextBox))]
 [HiddenExposedOption(nameof(Alignment))]
 [HiddenExposedOption(nameof(Caption))]
@@ -43,8 +42,8 @@ public partial class ScriptOutput : ControlBase {
     }
 
     public void Reconfigure() {
-        LibrarySupervisor.Instance.GlobalMessenger.Unregister(this);
-        LibrarySupervisor.Instance.GlobalMessenger.Register<SetValueMessage>(this, Id, HandleSetValueMessage);
+        MyLibrary.Instance.GlobalMessenger.Unregister(this);
+        MyLibrary.Instance.GlobalMessenger.Register<SetValueMessage>(this, Id, HandleSetValueMessage);
     }
 
     protected override void Dispose(bool isCalledManually) {
