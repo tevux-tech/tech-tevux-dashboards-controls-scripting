@@ -3,36 +3,64 @@ using System.Runtime.Loader;
 
 namespace Tech.Tevux.Dashboards.Controls;
 
-public class MyLibrary : ISharedLibraryMessengerConsumer,
+public class MyLibrary : ILibrary,
+                         ISharedLibraryMessengerConsumer,
                          IAssemblyContextConsumer,
                          IDashboardControlProvider,
                          IDashboardControlEditorProvider {
+
     private bool _isInitialized;
 
-    private MyLibrary() {
-        GlobalMessenger = new EmptyLibraryMessenger();
-    }
+    private MyLibrary() { }
 
     public static MyLibrary Instance { get; } = new MyLibrary();
     public AssemblyLoadContext AssemblyLoadContext { get; private set; } = AssemblyLoadContext.Default;
+    public Dictionary<System.Type, List<System.Type>> DashboardControlEditors { get; private set; } = null!;
+    public List<System.Type> DashboardControls { get; private set; } = null!;
     public ISharedLibraryMessenger GlobalMessenger { get; set; } = new EmptyLibraryMessenger();
 
-    private void Initialize() {
+    #region ILibrary
+    private bool _isDisposed;
+
+    public void Dispose() {
+        // A good article explaining how to implement Dispose. https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-dispose
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    public void Initialize() {
         if (_isInitialized) { return; }
 
+        DashboardControls = new List<System.Type> {
+            typeof(CSharpScriptButton),
+            typeof(ScriptIndicator),
+            typeof(ScriptNud),
+            typeof(ScriptOutput)
+        };
 
+        DashboardControlEditors = new Dictionary<System.Type, List<System.Type>>();
+        DashboardControlEditors.Add(typeof(CSharpScriptButton), new List<System.Type>() { typeof(CSharpScriptEditor) });
 
         _isInitialized = true;
     }
+
+    protected virtual void Dispose(bool isCalledManually) {
+        if (_isDisposed == false) {
+            if (isCalledManually) {
+                // Dispose managed objects here.
+            }
+
+            // Free unmanaged resources here and set large fields to null.
+
+            _isDisposed = true;
+        }
+    }
+    #endregion
 
     #region ISharedLibraryMessengerConsumer
 
     public void SetSharedMessenger(ISharedLibraryMessenger sharedMessenger) {
         GlobalMessenger = sharedMessenger;
-
-        GlobalMessenger.Register(this, (LoadingCompleteMessage message) => {
-            Initialize();
-        });
     }
 
     #endregion
@@ -48,14 +76,7 @@ public class MyLibrary : ISharedLibraryMessengerConsumer,
     #region IDashboardControlProvider
 
     public List<System.Type> GetDashboardControls() {
-        var controlList = new List<System.Type> {
-            typeof(CSharpScriptButton),
-            typeof(ScriptIndicator),
-            typeof(ScriptNud),
-            typeof(ScriptOutput)
-        };
-
-        return controlList;
+        return DashboardControls;
     }
 
     #endregion
@@ -63,10 +84,7 @@ public class MyLibrary : ISharedLibraryMessengerConsumer,
     #region IDashboardControlEditorProvider
 
     public Dictionary<System.Type, List<System.Type>> GetEditors() {
-        var editors = new Dictionary<System.Type, List<System.Type>>();
-        editors.Add(typeof(CSharpScriptButton), new List<System.Type>() { typeof(CSharpScriptEditor) });
-
-        return editors;
+        return DashboardControlEditors;
     }
 
     #endregion
