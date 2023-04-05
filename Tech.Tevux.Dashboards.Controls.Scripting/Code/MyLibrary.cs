@@ -40,6 +40,7 @@ public class MyLibrary : ILibrary,
 
         DashboardControlEditors = new Dictionary<System.Type, List<System.Type>>();
         DashboardControlEditors.Add(typeof(CSharpScriptButton), new List<System.Type>() { typeof(CSharpScriptEditor) });
+        DashboardControlEditors.Add(typeof(ScriptIndicator), new List<System.Type>() { typeof(RulesEditor) });
 
         _isInitialized = true;
     }
