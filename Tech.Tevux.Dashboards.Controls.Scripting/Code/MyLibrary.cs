@@ -10,14 +10,11 @@ public class MyLibrary : ILibrary,
     private bool _isInitialized;
 
     private MyLibrary() {
-        DashboardControls = new List<System.Type> {
-            typeof(CSharpScriptButton),
-            typeof(ScriptIndicator),
-            typeof(ScriptNud),
-            typeof(ScriptOutput)
-        };
+        DashboardControls.Add(typeof(CSharpScriptButton));
+        DashboardControls.Add(typeof(ScriptIndicator));
+        DashboardControls.Add(typeof(ScriptNud));
+        DashboardControls.Add(typeof(ScriptOutput));
 
-        DashboardControlEditors = new Dictionary<System.Type, List<System.Type>>();
         DashboardControlEditors.Add(typeof(CSharpScriptButton), new List<System.Type>() { typeof(CSharpScriptEditor) });
         DashboardControlEditors.Add(typeof(ScriptIndicator), new List<System.Type>() { typeof(RulesEditor) });
     }
@@ -36,8 +33,8 @@ public class MyLibrary : ILibrary,
 
     #region Dependency providers 
 
-    public Dictionary<System.Type, List<System.Type>> DashboardControlEditors { get; private set; } = null!;
-    public List<System.Type> DashboardControls { get; private set; } = null!;
+    public Dictionary<System.Type, List<System.Type>> DashboardControlEditors { get; private set; } = new();
+    public List<System.Type> DashboardControls { get; private set; } = new();
 
     #endregion
 
