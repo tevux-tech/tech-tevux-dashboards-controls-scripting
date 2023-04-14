@@ -1,8 +1,27 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:base="clr-namespace:Tech.Tevux.Dashboards.Controls;assembly=Tech.Tevux.Dashboards.Controls.Base" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Tech.Tevux.Dashboards.Controls" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Tech.Tevux.Dashboards.Controls" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     mc:Ignorable="d">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/Tech.Tevux.Dashboards.Controls.Base;Component/Themes/CSharpScriptControlBase.xaml" />
-    </ResourceDictionary.MergedDictionaries>
-    <Style BasedOn="{StaticResource {x:Type base:CSharpScriptControlBase}}" TargetType="{x:Type local:CSharpScriptButton}" />
+    <Style TargetType="{x:Type local:CSharpScriptButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:CSharpScriptButton}">
+                    <Grid Background="LightYellow">
+                        <Grid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Command="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=CancelExecutionCommand}" Header="Cancel" />
+                            </ContextMenu>
+                        </Grid.ContextMenu>
+                        <Button x:Name="PART_MainButton"
+                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                Command="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ExecuteCommand}"
+                                FontSize="18">
+                            <Viewbox Panel.ZIndex="1" Style="{DynamicResource MyViewboxStyle}">
+                                <TextBlock FontSize="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=TextSize}" Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Caption}" />
+                            </Viewbox>
+                        </Button>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
