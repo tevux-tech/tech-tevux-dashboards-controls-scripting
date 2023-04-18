@@ -11,9 +11,12 @@ public partial class CSharpScriptButton : CSharpScriptControlBase {
     private readonly CancellationTokenSource _globalCts = new();
     private bool _isDisposed;
 
+    static CSharpScriptButton() {
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(CSharpScriptButton), new FrameworkPropertyMetadata(typeof(CSharpScriptButton)));
+    }
+
     public CSharpScriptButton() {
-        ExecuteCommand = new AsyncCommand(() => Task.Factory.StartNew(Execute));
-        CancelExecutionCommand = new AsyncCommand(() => Task.Factory.StartNew(CancelExecution), CanCancelExecutionCommand);
+
     }
 
     public override void OnApplyTemplate() {
