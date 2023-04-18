@@ -14,9 +14,6 @@ public class MyLibrary : ILibrary,
         DashboardControls.Add(typeof(ScriptIndicator));
         DashboardControls.Add(typeof(ScriptNud));
         DashboardControls.Add(typeof(ScriptOutput));
-
-        DashboardControlEditors.Add(typeof(CSharpScriptButton), new List<System.Type>() { typeof(CSharpScriptEditor) });
-        DashboardControlEditors.Add(typeof(ScriptIndicator), new List<System.Type>() { typeof(RulesEditor) });
     }
 
     public static MyLibrary Instance { get; } = new MyLibrary();

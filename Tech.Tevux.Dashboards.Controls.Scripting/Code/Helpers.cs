@@ -17,7 +17,10 @@ public class AutoConverter {
     public static bool TryGetAsNumber(object input, out decimal inputAsNumber) {
         var success = false;
 
-        if (input is float floatValue) {
+        if (input is decimal decimalValue) {
+            inputAsNumber = decimalValue;
+            success = true;
+        } else if (input is float floatValue) {
             inputAsNumber = (decimal)floatValue;
             success = true;
         } else if (input is double doubleValue) {

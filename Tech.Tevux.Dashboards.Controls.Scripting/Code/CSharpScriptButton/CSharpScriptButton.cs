@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using DevBot9.Mvvm;
-using NLog;
+﻿using NLog;
 
 namespace Tech.Tevux.Dashboards.Controls;
 
