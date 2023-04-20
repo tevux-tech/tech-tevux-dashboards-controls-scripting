@@ -15,7 +15,7 @@
                                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                                 Command="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ExecuteCommand}"
                                 FontSize="18">
-                            <Viewbox Panel.ZIndex="1" Style="{DynamicResource MyViewboxStyle}">
+                            <Viewbox Panel.ZIndex="1" Style="{DynamicResource TtViewboxStyle}">
                                 <TextBlock FontSize="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=TextSize}" Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Caption}" />
                             </Viewbox>
                         </Button>

@@ -3,7 +3,7 @@
 namespace Tech.Tevux.Dashboards.Controls;
 
 [Category("General")]
-[DisplayName("C# script button")]
+[DisplayName("Script button (C#)")]
 public partial class CSharpScriptButton : CSharpScriptControlBase {
     private static readonly Logger _log = LogManager.GetCurrentClassLogger();
     private readonly CancellationTokenSource _globalCts = new();
