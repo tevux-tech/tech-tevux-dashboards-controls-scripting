@@ -6,7 +6,7 @@ namespace Tech.Tevux.Dashboards.Controls;
 
 [HideExposedOption(nameof(Alignment))]
 [HideExposedOption(nameof(Caption))]
-[Category("Scripting")]
+[Category("General")]
 [DisplayName("Script output")]
 public partial class ScriptOutput : ControlBase {
     private readonly StringBuilder _textBuilder = new();
