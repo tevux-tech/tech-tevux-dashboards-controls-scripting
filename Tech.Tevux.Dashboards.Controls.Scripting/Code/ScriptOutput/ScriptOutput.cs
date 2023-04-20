@@ -4,9 +4,8 @@ using DevBot9.Mvvm;
 
 namespace Tech.Tevux.Dashboards.Controls;
 
-[TemplatePart(Name = "PART_MainText", Type = typeof(TextBox))]
-[HiddenExposedOption(nameof(Alignment))]
-[HiddenExposedOption(nameof(Caption))]
+[HideExposedOption(nameof(Alignment))]
+[HideExposedOption(nameof(Caption))]
 [Category("Scripting")]
 [DisplayName("Script output")]
 public partial class ScriptOutput : ControlBase {

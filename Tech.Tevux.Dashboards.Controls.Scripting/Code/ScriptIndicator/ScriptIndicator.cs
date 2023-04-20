@@ -1,8 +1,8 @@
 ﻿namespace Tech.Tevux.Dashboards.Controls;
 
-[Category("Scripting")]
+[Category("General")]
 [DisplayName("Script indicator")]
-public partial class ScriptIndicator : OutputControlBase {
+public partial class ScriptIndicator : TextualOutputControlBase {
     private bool _isDisposed;
 
     static ScriptIndicator() {

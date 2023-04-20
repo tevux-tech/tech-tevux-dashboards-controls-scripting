@@ -1,11 +1,9 @@
-﻿using System.Threading.Tasks;
-using DevBot9.Mvvm;
-using NLog;
+﻿using NLog;
 
 namespace Tech.Tevux.Dashboards.Controls;
 
-[Category("Scripting")]
-[DisplayName("C# script button (generic)")]
+[Category("General")]
+[DisplayName("C# script button")]
 public partial class CSharpScriptButton : CSharpScriptControlBase {
     private static readonly Logger _log = LogManager.GetCurrentClassLogger();
     private readonly CancellationTokenSource _globalCts = new();

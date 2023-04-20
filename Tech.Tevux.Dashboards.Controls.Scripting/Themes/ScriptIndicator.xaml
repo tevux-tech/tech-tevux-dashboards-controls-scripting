@@ -10,7 +10,7 @@
                             <TextBlock x:Name="PART_MainText"
                                        FontSize="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=TextSize}"
                                        Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}"
-                                       Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Caption}" />
+                                       Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=OutputText}" />
                         </Viewbox>
                     </Grid>
                 </ControlTemplate>
