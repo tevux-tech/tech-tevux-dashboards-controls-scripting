@@ -5,12 +5,17 @@ using MahApps.Metro.Controls;
 
 namespace Tech.Tevux.Dashboards.Controls;
 
-[HiddenExposedOption(nameof(Caption))]
-[HiddenExposedOption(nameof(Alignment))]
-[Category("Scripting")]
+[HideExposedOption(nameof(Caption))]
+[HideExposedOption(nameof(Alignment))]
+[Category("General")]
 [DisplayName("Script numeric up-down")]
 public partial class ScriptNud : NumericInputControlBase {
     private bool _isDisposed;
+
+    static ScriptNud() {
+        // Binding to DecimalPlaces updates, because that should trigger reconfiguration.
+        DecimalPlacesProperty.OverrideMetadata(typeof(ScriptNud), new PropertyMetadata((d, e) => { (d as ScriptNud)?.Reconfigure(); }));
+    }
 
     public ScriptNud() { }
 
@@ -35,7 +40,7 @@ public partial class ScriptNud : NumericInputControlBase {
             BindingOperations.SetBinding(nud, NumericUpDown.IntervalProperty, new Binding(nameof(Step)) { Source = this });
             BindingOperations.SetBinding(nud, NumericUpDown.MinimumProperty, new Binding(nameof(Minimum)) { Source = this });
             BindingOperations.SetBinding(nud, NumericUpDown.MaximumProperty, new Binding(nameof(Maximum)) { Source = this });
-            BindingOperations.SetBinding(nud, NumericUpDown.StringFormatProperty, new Binding(nameof(CombinedFormat)) { Source = this });
+            BindingOperations.SetBinding(nud, NumericUpDown.StringFormatProperty, new Binding(nameof(StringFormat)) { Source = this });
             BindingOperations.SetBinding(nud, NumericUpDown.ValueProperty, new Binding(nameof(Value)) { Source = this, Mode = BindingMode.TwoWay });
 
             grid.Children.Add(nud);
@@ -45,8 +50,9 @@ public partial class ScriptNud : NumericInputControlBase {
     }
 
     public void Reconfigure() {
+        StringFormat = "F" + DecimalPlaces;
+
         MyLibrary.Instance.GlobalMessenger.Unregister(this);
-        MyLibrary.Instance.GlobalMessenger.Register<SetValueMessage>(this, Id, HandleSetValueMessage);
         MyLibrary.Instance.GlobalMessenger.Register<GetValueMessage>(this, Id, HandleGetValueMessage);
     }
 
@@ -71,14 +77,6 @@ public partial class ScriptNud : NumericInputControlBase {
         Dispatcher.Invoke(() => {
             message.Value = Value;
             message.IsFinished = true;
-        });
-    }
-
-    private void HandleSetValueMessage(SetValueMessage message) {
-        Dispatcher.Invoke(() => {
-            if (AutoConverter.TryGetAsNumber(message.Value, out var number)) {
-                //ApplyAppearanceRules(number);
-            }
         });
     }
 }
