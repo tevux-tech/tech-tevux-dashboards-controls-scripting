@@ -31,6 +31,7 @@ public partial class ScriptTextualIndicator : TextualOutputControlBase {
         if (_isDisposed == false) {
             if (isCalledManually) {
                 // Free managed resources here.
+                MyLibrary.Instance.GlobalMessenger.Unregister(this);
             }
 
             // Free unmanaged resources here and set large fields to null.

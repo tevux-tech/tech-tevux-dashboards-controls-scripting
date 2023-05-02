@@ -10,7 +10,7 @@
                                  FontSize="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=TextSize}"
                                  Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}"
                                  IsReadOnly="True"
-                                 Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Caption}"
+                                 Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=OutputText}"
                                  VerticalScrollBarVisibility="Auto">
                             <TextBox.ContextMenu>
                                 <ContextMenu>

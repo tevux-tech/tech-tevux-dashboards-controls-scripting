@@ -11,10 +11,10 @@ namespace Tech.Tevux.Dashboards.Controls;
 [DisplayName("Script numeric up-down")]
 public partial class ScriptNud : NumericInputControlBase {
     private bool _isDisposed;
+    private NumericUpDown? _theNud;
 
     static ScriptNud() {
-        // Binding to DecimalPlaces updates, because that should trigger reconfiguration.
-        DecimalPlacesProperty.OverrideMetadata(typeof(ScriptNud), new PropertyMetadata((d, e) => { (d as ScriptNud)?.Reconfigure(); }));
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(ScriptNud), new FrameworkPropertyMetadata(typeof(ScriptNud)));
     }
 
     public ScriptNud() { }
@@ -36,11 +36,8 @@ public partial class ScriptNud : NumericInputControlBase {
                 Background = Brushes.White
             };
 
-            BindingOperations.SetBinding(nud, NumericUpDown.FontSizeProperty, new Binding(nameof(TextSize)) { Source = this });
-            BindingOperations.SetBinding(nud, NumericUpDown.IntervalProperty, new Binding(nameof(Step)) { Source = this });
-            BindingOperations.SetBinding(nud, NumericUpDown.MinimumProperty, new Binding(nameof(Minimum)) { Source = this });
-            BindingOperations.SetBinding(nud, NumericUpDown.MaximumProperty, new Binding(nameof(Maximum)) { Source = this });
-            BindingOperations.SetBinding(nud, NumericUpDown.StringFormatProperty, new Binding(nameof(StringFormat)) { Source = this });
+            _theNud = nud;
+
             BindingOperations.SetBinding(nud, NumericUpDown.ValueProperty, new Binding(nameof(NumericValue)) { Source = this, Mode = BindingMode.TwoWay });
 
             grid.Children.Add(nud);
@@ -49,8 +46,16 @@ public partial class ScriptNud : NumericInputControlBase {
         Reconfigure();
     }
 
-    public void Reconfigure() {
-        StringFormat = "F" + DecimalPlaces;
+    public override void Reconfigure() {
+        base.Reconfigure();
+
+        if (_theNud is not null) {
+            _theNud.FontSize = TextSize;
+            _theNud.Interval = (double)Step;
+            _theNud.Minimum = (double)Minimum;
+            _theNud.Maximum = (double)Maximum;
+            _theNud.StringFormat = "F" + DecimalPlaces;
+        }
 
         MyLibrary.Instance.GlobalMessenger.Unregister(this);
         MyLibrary.Instance.GlobalMessenger.Register<GetValueMessage>(this, Id, HandleGetValueMessage);
@@ -64,7 +69,7 @@ public partial class ScriptNud : NumericInputControlBase {
                 // https://stackoverflow.com/questions/6960520/when-to-dispose-cancellationtokensource
 
                 // _globalCts.Cancel();
-
+                MyLibrary.Instance.GlobalMessenger.Unregister(this);
             }
 
             _isDisposed = true;

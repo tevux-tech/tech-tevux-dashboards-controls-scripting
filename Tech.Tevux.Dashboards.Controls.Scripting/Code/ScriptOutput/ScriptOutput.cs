@@ -22,7 +22,7 @@ public partial class ScriptOutput : ControlBase {
             switch (parameter) {
                 case "clear":
                     _textBuilder.Clear();
-                    Caption = _textBuilder.ToString();
+                    OutputText = _textBuilder.ToString();
                     break;
             }
         });
@@ -40,7 +40,9 @@ public partial class ScriptOutput : ControlBase {
         Reconfigure();
     }
 
-    public void Reconfigure() {
+    public override void Reconfigure() {
+        base.Reconfigure();
+
         MyLibrary.Instance.GlobalMessenger.Unregister(this);
         MyLibrary.Instance.GlobalMessenger.Register<SetValueMessage>(this, Id, HandleSetValueMessage);
     }
@@ -49,6 +51,7 @@ public partial class ScriptOutput : ControlBase {
         if (_isDisposed == false) {
             if (isCalledManually) {
                 // Free managed resources here.
+                MyLibrary.Instance.GlobalMessenger.Unregister(this);
             }
 
             // Free unmanaged resources here and set large fields to null.
@@ -63,7 +66,7 @@ public partial class ScriptOutput : ControlBase {
             _textBuilder.Remove(0, _textBuilder.Length - 8000);
         }
         Dispatcher.Invoke(() => {
-            Caption = _textBuilder.ToString();
+            OutputText = _textBuilder.ToString();
             _textBox?.ScrollToEnd();
         });
     }
