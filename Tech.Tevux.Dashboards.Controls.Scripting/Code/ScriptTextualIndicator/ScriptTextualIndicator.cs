@@ -1,15 +1,15 @@
 ﻿namespace Tech.Tevux.Dashboards.Controls;
 
 [Category("General")]
-[DisplayName("Script indicator")]
-public partial class ScriptIndicator : TextualOutputControlBase {
+[DisplayName("Script textual indicator")]
+public partial class ScriptTextualIndicator : TextualOutputControlBase {
     private bool _isDisposed;
 
-    static ScriptIndicator() {
-        DefaultStyleKeyProperty.OverrideMetadata(typeof(ScriptIndicator), new FrameworkPropertyMetadata(typeof(ScriptIndicator)));
+    static ScriptTextualIndicator() {
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(ScriptTextualIndicator), new FrameworkPropertyMetadata(typeof(ScriptTextualIndicator)));
     }
 
-    public ScriptIndicator() {
+    public ScriptTextualIndicator() {
         if (DesignerProperties.GetIsInDesignMode(new DependencyObject())) { return; }
     }
     public override void OnApplyTemplate() {
@@ -42,10 +42,10 @@ public partial class ScriptIndicator : TextualOutputControlBase {
 
     private void HandleSetValueMessage(SetValueMessage message) {
         Dispatcher.Invoke(() => {
-            if (AutoConverter.TryGetAsNumber(message.Value, out var number)) {
-                ApplyAppearanceRules(number);
-            } else if (AutoConverter.TryGetAsText(message.Value, out var text)) {
-                ApplyAppearanceRules(text);
+            if (AutoConverter.TryGetAsText(message.Value, out var text)) {
+                TextualValue = text;
+            } else {
+                ErrorMessage = "Value sent to this control is not a text.";
             }
         });
     }

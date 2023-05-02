@@ -44,7 +44,10 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Themes\ScriptIndicator.xaml">
+    <Page Update="Themes\ScriptNumericIndicator.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Themes\ScriptTextualIndicator.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
@@ -67,7 +70,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Code\ScriptIndicator\TemplateProperties\" />
+    <Folder Include="Code\ScriptNumericIndicator\TemplateProperties\" />
+    <Folder Include="Code\ScriptTextualIndicator\TemplateProperties\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" Pack="True" PackagePath="\" />
@@ -78,12 +82,14 @@
     <PackageReference Include="DevBot9.Mvvm" Version="22.1.3" />
     <PackageReference Include="MahApps.Metro" Version="2.4.9" />
     <PackageReference Include="NLog" Version="4.7.15" />
-    <PackageReference Include="Tech.Tevux.Dashboards.Controls.Base" Version="0.36.0" />
     <PackageReference Include="Tevux.Software.Helpers" Version="0.18.0" />
     <PackageReference Include="Tevux.Tools.RepositorySettings" Version="1.5.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\tech-tevux-dashboards-controls-base\Tech.Tevux.Dashboards.Controls.Base\Tech.Tevux.Dashboards.Controls.Base.csproj" />
   </ItemGroup>
 
 </Project>

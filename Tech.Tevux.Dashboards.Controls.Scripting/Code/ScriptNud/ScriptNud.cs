@@ -24,7 +24,7 @@ public partial class ScriptNud : NumericInputControlBase {
 
         if (DesignerProperties.GetIsInDesignMode(this)) { return; }
 
-        Value = InitialValue;
+        NumericValue = InitialValue;
 
         if (Template.FindName("PART_MainGrid", this) is Grid grid) {
             BindingOperations.SetBinding(grid, Grid.ToolTipProperty, new Binding(nameof(TooltipText)) { Source = this });
@@ -41,7 +41,7 @@ public partial class ScriptNud : NumericInputControlBase {
             BindingOperations.SetBinding(nud, NumericUpDown.MinimumProperty, new Binding(nameof(Minimum)) { Source = this });
             BindingOperations.SetBinding(nud, NumericUpDown.MaximumProperty, new Binding(nameof(Maximum)) { Source = this });
             BindingOperations.SetBinding(nud, NumericUpDown.StringFormatProperty, new Binding(nameof(StringFormat)) { Source = this });
-            BindingOperations.SetBinding(nud, NumericUpDown.ValueProperty, new Binding(nameof(Value)) { Source = this, Mode = BindingMode.TwoWay });
+            BindingOperations.SetBinding(nud, NumericUpDown.ValueProperty, new Binding(nameof(NumericValue)) { Source = this, Mode = BindingMode.TwoWay });
 
             grid.Children.Add(nud);
         }
@@ -75,7 +75,7 @@ public partial class ScriptNud : NumericInputControlBase {
 
     private void HandleGetValueMessage(GetValueMessage message) {
         Dispatcher.Invoke(() => {
-            message.Value = Value;
+            message.Value = NumericValue;
             message.IsFinished = true;
         });
     }
