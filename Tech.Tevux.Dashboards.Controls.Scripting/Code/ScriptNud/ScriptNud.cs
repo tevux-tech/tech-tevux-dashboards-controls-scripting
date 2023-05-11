@@ -11,7 +11,7 @@ namespace Tech.Tevux.Dashboards.Controls;
 [DisplayName("Script numeric up-down")]
 public partial class ScriptNud : NumericInputControlBase {
     private bool _isDisposed;
-    private NumericUpDown? _theNud;
+    private Control? _theNud;
 
     static ScriptNud() {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(ScriptNud), new FrameworkPropertyMetadata(typeof(ScriptNud)));
@@ -49,12 +49,12 @@ public partial class ScriptNud : NumericInputControlBase {
     public override void Reconfigure() {
         base.Reconfigure();
 
-        if (_theNud is not null) {
-            _theNud.FontSize = TextSize;
-            _theNud.Interval = (double)Step;
-            _theNud.Minimum = (double)Minimum;
-            _theNud.Maximum = (double)Maximum;
-            _theNud.StringFormat = "F" + DecimalPlaces;
+        if (_theNud is NumericUpDown theRealNud) {
+            theRealNud.FontSize = TextSize;
+            theRealNud.Interval = (double)Step;
+            theRealNud.Minimum = (double)Minimum;
+            theRealNud.Maximum = (double)Maximum;
+            theRealNud.StringFormat = "F" + DecimalPlaces;
         }
 
         MyLibrary.Instance.GlobalMessenger.Unregister(this);
