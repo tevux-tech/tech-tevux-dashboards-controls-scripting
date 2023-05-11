@@ -11,7 +11,6 @@ namespace Tech.Tevux.Dashboards.Controls;
 [DisplayName("Script numeric up-down")]
 public partial class ScriptNud : NumericInputControlBase {
     private bool _isDisposed;
-    private Control? _theNud;
 
     static ScriptNud() {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(ScriptNud), new FrameworkPropertyMetadata(typeof(ScriptNud)));
@@ -36,9 +35,12 @@ public partial class ScriptNud : NumericInputControlBase {
                 Background = Brushes.White
             };
 
-            _theNud = nud;
-
             BindingOperations.SetBinding(nud, NumericUpDown.ValueProperty, new Binding(nameof(NumericValue)) { Source = this, Mode = BindingMode.TwoWay });
+            BindingOperations.SetBinding(nud, NumericUpDown.FontSizeProperty, new Binding(nameof(TextSize)) { Source = this });
+            BindingOperations.SetBinding(nud, NumericUpDown.IntervalProperty, new Binding(nameof(Step)) { Source = this });
+            BindingOperations.SetBinding(nud, NumericUpDown.MinimumProperty, new Binding(nameof(Minimum)) { Source = this });
+            BindingOperations.SetBinding(nud, NumericUpDown.MaximumProperty, new Binding(nameof(Maximum)) { Source = this });
+            BindingOperations.SetBinding(nud, NumericUpDown.StringFormatProperty, new Binding(nameof(StringFormat)) { Source = this });
 
             grid.Children.Add(nud);
         }
@@ -48,14 +50,7 @@ public partial class ScriptNud : NumericInputControlBase {
 
     public override void Reconfigure() {
         base.Reconfigure();
-
-        if (_theNud is NumericUpDown theRealNud) {
-            theRealNud.FontSize = TextSize;
-            theRealNud.Interval = (double)Step;
-            theRealNud.Minimum = (double)Minimum;
-            theRealNud.Maximum = (double)Maximum;
-            theRealNud.StringFormat = "F" + DecimalPlaces;
-        }
+        StringFormat = "F" + DecimalPlaces;
 
         MyLibrary.Instance.GlobalMessenger.Unregister(this);
         MyLibrary.Instance.GlobalMessenger.Register<GetValueMessage>(this, Id, HandleGetValueMessage);
