@@ -1,5 +1,3 @@
-﻿using NLog;
-
 namespace Tech.Tevux.Dashboards.Controls;
 
 [Category("General")]
