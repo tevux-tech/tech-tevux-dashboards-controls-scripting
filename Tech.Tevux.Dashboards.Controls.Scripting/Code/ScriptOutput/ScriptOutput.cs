@@ -9,6 +9,7 @@ namespace Tech.Tevux.Dashboards.Controls;
 [Category("General")]
 [DisplayName("Script output")]
 public partial class ScriptOutput : ControlBase {
+    private readonly ISharedLibraryMessagingProvider _interLibraryMessenger;
     private readonly StringBuilder _textBuilder = new();
     private bool _isDisposed;
     private TextBox? _textBox;
@@ -18,6 +19,8 @@ public partial class ScriptOutput : ControlBase {
     }
 
     public ScriptOutput() {
+        _interLibraryMessenger = MyLibrary.Instance.GlobalMessenger;
+
         HandleContextMenuClickCommand = new DelegateCommand<string>((parameter) => {
             switch (parameter) {
                 case "clear":
@@ -43,15 +46,15 @@ public partial class ScriptOutput : ControlBase {
     public override void Reconfigure() {
         base.Reconfigure();
 
-        MyLibrary.Instance.GlobalMessenger.Unregister(this);
-        MyLibrary.Instance.GlobalMessenger.Register<SetValueMessage>(this, Id, HandleSetValueMessage);
+        _interLibraryMessenger.Unregister(this);
+        _interLibraryMessenger.Register<SetValueMessage>(this, Id, HandleSetValueMessage);
     }
 
     protected override void Dispose(bool isCalledManually) {
         if (_isDisposed == false) {
             if (isCalledManually) {
                 // Free managed resources here.
-                MyLibrary.Instance.GlobalMessenger.Unregister(this);
+                _interLibraryMessenger.Unregister(this);
             }
 
             // Free unmanaged resources here and set large fields to null.

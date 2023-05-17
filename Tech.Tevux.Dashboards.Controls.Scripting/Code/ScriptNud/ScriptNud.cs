@@ -10,13 +10,16 @@ namespace Tech.Tevux.Dashboards.Controls;
 [Category("General")]
 [DisplayName("Script numeric up-down")]
 public partial class ScriptNud : NumericInputControlBase {
+    private readonly ISharedLibraryMessagingProvider _interLibraryMessenger;
     private bool _isDisposed;
 
     static ScriptNud() {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(ScriptNud), new FrameworkPropertyMetadata(typeof(ScriptNud)));
     }
 
-    public ScriptNud() { }
+    public ScriptNud() {
+        _interLibraryMessenger = MyLibrary.Instance.GlobalMessenger;
+    }
 
     public override void OnApplyTemplate() {
         base.OnApplyTemplate();
@@ -52,8 +55,8 @@ public partial class ScriptNud : NumericInputControlBase {
         base.Reconfigure();
         StringFormat = "F" + DecimalPlaces;
 
-        MyLibrary.Instance.GlobalMessenger.Unregister(this);
-        MyLibrary.Instance.GlobalMessenger.Register<GetValueMessage>(this, Id, HandleGetValueMessage);
+        _interLibraryMessenger.Unregister(this);
+        _interLibraryMessenger.Register<GetValueMessage>(this, Id, HandleGetValueMessage);
     }
 
     protected override void Dispose(bool isCalledManually) {
@@ -64,7 +67,7 @@ public partial class ScriptNud : NumericInputControlBase {
                 // https://stackoverflow.com/questions/6960520/when-to-dispose-cancellationtokensource
 
                 // _globalCts.Cancel();
-                MyLibrary.Instance.GlobalMessenger.Unregister(this);
+                _interLibraryMessenger.Unregister(this);
             }
 
             _isDisposed = true;

@@ -3,6 +3,7 @@
 [Category("General")]
 [DisplayName("Script numeric indicator")]
 public partial class ScriptNumericIndicator : NumericOutputControlBase {
+    private readonly ISharedLibraryMessagingProvider _interLibraryMessenger;
     private bool _isDisposed;
 
     static ScriptNumericIndicator() {
@@ -10,7 +11,7 @@ public partial class ScriptNumericIndicator : NumericOutputControlBase {
     }
 
     public ScriptNumericIndicator() {
-        if (DesignerProperties.GetIsInDesignMode(new DependencyObject())) { return; }
+        _interLibraryMessenger = MyLibrary.Instance.GlobalMessenger;
     }
     public override void OnApplyTemplate() {
         base.OnApplyTemplate();
@@ -23,15 +24,15 @@ public partial class ScriptNumericIndicator : NumericOutputControlBase {
     public override void Reconfigure() {
         base.Reconfigure();
 
-        MyLibrary.Instance.GlobalMessenger.Unregister(this);
-        MyLibrary.Instance.GlobalMessenger.Register<SetValueMessage>(this, Id, HandleSetValueMessage);
+        _interLibraryMessenger.Unregister(this);
+        _interLibraryMessenger.Register<SetValueMessage>(this, Id, HandleSetValueMessage);
     }
 
     protected override void Dispose(bool isCalledManually) {
         if (_isDisposed == false) {
             if (isCalledManually) {
                 // Free managed resources here.
-                MyLibrary.Instance.GlobalMessenger.Unregister(this);
+                _interLibraryMessenger.Unregister(this);
             }
 
             // Free unmanaged resources here and set large fields to null.
