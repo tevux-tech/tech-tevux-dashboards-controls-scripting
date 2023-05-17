@@ -1,4 +1,4 @@
-namespace Tech.Tevux.Dashboards.Controls;
+﻿namespace Tech.Tevux.Dashboards.Controls;
 
 [Category("General")]
 [DisplayName("Script button (C#)")]
@@ -18,7 +18,7 @@ public partial class CSharpScriptButton : CSharpScriptControlBase {
         base.OnApplyTemplate();
 
         AssemblyLoadContext = MyLibrary.Instance.AssemblyLoadContext;
-        ScriptContext = (ScriptContextBase)Activator.CreateInstance(typeof(ScriptContext))!;
+        ScriptContext = new ScriptContext();
     }
 
     protected override void Dispose(bool isCalledManually) {
