@@ -27,6 +27,9 @@ public class MyLibrary : ILibrary,
     [InjectedByHost]
     public ISharedLibraryMessagingProvider GlobalMessenger { get; set; } = new EmptySharedLibraryMessagingProvider();
 
+    [InjectedByHost]
+    public ILogger Logger { get; set; } = NullLogger.Instance;
+
     #endregion
 
     #region Dependency providers 
