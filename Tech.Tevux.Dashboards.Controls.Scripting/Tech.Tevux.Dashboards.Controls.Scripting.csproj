@@ -9,7 +9,7 @@
     <Version>0.36.0</Version>
     <Company>Tevux Technologies</Company>
     <Copyright>© 2022 Tevux Technologies</Copyright>
-    <Title>Scripting controls for Tevux Dashboards</Title>
+    <AssemblyTitle>C# Scripting controls</AssemblyTitle>
     <Authors>devbotas</Authors>
     <Description>Provides C# scripting subsystem.</Description>
     <RepositoryUrl>https://github.com/tevux-tech/tech-tevux-dashboards-controls-scripting</RepositoryUrl>
@@ -62,12 +62,6 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
   </PropertyGroup>
-
-  <ItemGroup>
-    <AssemblyAttribute Include="Tevux.Dashboards.Abstractions.AssemblyLoadContextAttribute">
-      <FriendlyName>Generic (scripting)</FriendlyName>
-    </AssemblyAttribute>
-  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Code\ScriptNumericIndicator\TemplateProperties\" />
