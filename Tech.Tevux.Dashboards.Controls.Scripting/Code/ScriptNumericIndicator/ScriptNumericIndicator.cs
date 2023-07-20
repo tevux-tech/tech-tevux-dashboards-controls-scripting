@@ -11,7 +11,7 @@ public partial class ScriptNumericIndicator : NumericOutputControlBase {
     }
 
     public ScriptNumericIndicator() {
-        _interLibraryMessenger = MyLibrary.Instance.GlobalMessenger;
+        _interLibraryMessenger = ScriptingLibrary.Instance.GlobalMessenger;
     }
     public override void OnApplyTemplate() {
         base.OnApplyTemplate();

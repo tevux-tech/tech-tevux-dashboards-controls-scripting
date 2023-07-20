@@ -3,13 +3,13 @@ using System.Runtime.Loader;
 
 namespace Tech.Tevux.Dashboards.Controls;
 
-public class MyLibrary : ILibrary,
+public class ScriptingLibrary : ILibrary,
                          IDashboardControlProvider,
                          IDashboardControlEditorProvider {
 
     private bool _isInitialized;
 
-    private MyLibrary() {
+    private ScriptingLibrary() {
         DashboardControls.Add(typeof(CSharpScriptButton));
         DashboardControls.Add(typeof(ScriptTextualIndicator));
         DashboardControls.Add(typeof(ScriptNumericIndicator));
@@ -17,7 +17,7 @@ public class MyLibrary : ILibrary,
         DashboardControls.Add(typeof(ScriptOutput));
     }
 
-    public static MyLibrary Instance { get; } = new MyLibrary();
+    public static ScriptingLibrary Instance { get; } = new();
 
     #region Dependency injection
 

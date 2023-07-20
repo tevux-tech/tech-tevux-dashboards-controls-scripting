@@ -18,7 +18,7 @@ public partial class ScriptNud : NumericInputControlBase {
     }
 
     public ScriptNud() {
-        _interLibraryMessenger = MyLibrary.Instance.GlobalMessenger;
+        _interLibraryMessenger = ScriptingLibrary.Instance.GlobalMessenger;
     }
 
     public override void OnApplyTemplate() {

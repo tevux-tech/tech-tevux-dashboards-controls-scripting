@@ -17,7 +17,7 @@ public partial class CSharpScriptButton : CSharpScriptControlBase {
     public override void OnApplyTemplate() {
         base.OnApplyTemplate();
 
-        AssemblyLoadContext = MyLibrary.Instance.AssemblyLoadContext;
+        AssemblyLoadContext = ScriptingLibrary.Instance.AssemblyLoadContext;
         ScriptContext = new ScriptContext();
     }
 

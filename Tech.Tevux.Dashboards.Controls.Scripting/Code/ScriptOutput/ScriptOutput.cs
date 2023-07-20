@@ -19,7 +19,7 @@ public partial class ScriptOutput : ControlBase {
     }
 
     public ScriptOutput() {
-        _interLibraryMessenger = MyLibrary.Instance.GlobalMessenger;
+        _interLibraryMessenger = ScriptingLibrary.Instance.GlobalMessenger;
 
         HandleContextMenuClickCommand = new DelegateCommand<string>((parameter) => {
             switch (parameter) {
