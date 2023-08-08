@@ -6,7 +6,7 @@ public partial class ScriptNud {
         typeof(ScriptNud),
         new PropertyMetadata(0m));
 
-    [ExposedOption(OptionType.Number)]
+    [ExposedNumber]
     [DisplayName("Initial value")]
     [Category(OptionCategory.Main)]
     public decimal InitialValue {

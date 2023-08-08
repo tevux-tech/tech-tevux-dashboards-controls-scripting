@@ -9,7 +9,7 @@ public partial class ScriptNumericIndicator {
             ((ScriptNumericIndicator)d).Reconfigure();
         }));
 
-    [ExposedOption(OptionType.SingleLineText)]
+    [ExposedSingleLineText]
     [Category(OptionCategory.Main)]
     public string Id {
         get { return (string)GetValue(IdProperty); }
