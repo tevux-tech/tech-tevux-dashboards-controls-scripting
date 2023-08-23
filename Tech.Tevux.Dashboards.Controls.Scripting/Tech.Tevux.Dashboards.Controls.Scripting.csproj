@@ -6,7 +6,7 @@
     <NoWarn>CS1591</NoWarn>
     <UseWPF>true</UseWPF>
     <OutputType>Library</OutputType>
-    <Version>0.38.0</Version>
+    <Version>0.39.0</Version>
     <Company>Tevux Technologies</Company>
     <Copyright>© 2022 Tevux Technologies</Copyright>
     <AssemblyTitle>C# Scripting controls</AssemblyTitle>
@@ -60,7 +60,7 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="DevBot9.Mvvm" Version="22.1.3" />
     <PackageReference Include="MahApps.Metro" Version="2.4.9" />
-    <PackageReference Include="Tech.Tevux.Dashboards.Controls.Base" Version="0.45.0" />
+    <PackageReference Include="Tech.Tevux.Dashboards.Controls.Base" Version="0.46.0" />
     <PackageReference Include="Tevux.Software.Helpers" Version="0.18.0" />
     <PackageReference Include="Tevux.Tools.RepositorySettings" Version="1.7.0">
       <PrivateAssets>all</PrivateAssets>
