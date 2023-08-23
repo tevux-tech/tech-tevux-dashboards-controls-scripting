@@ -11,9 +11,6 @@ public class ScriptingLibrary : ILibrary,
 
     private ScriptingLibrary() {
         DashboardControls.Add(typeof(CSharpScriptButton));
-        DashboardControls.Add(typeof(ScriptTextualIndicator));
-        DashboardControls.Add(typeof(ScriptNumericIndicator));
-        DashboardControls.Add(typeof(ScriptNud));
         DashboardControls.Add(typeof(ScriptOutput));
     }
 

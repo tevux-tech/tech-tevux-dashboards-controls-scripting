@@ -2,9 +2,6 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Tech.Tevux.Dashboards.Controls.Base;Component/Themes/Generic.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Tech.Tevux.Dashboards.Controls.Scripting;Component/Themes/CSharpScriptButton.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Tech.Tevux.Dashboards.Controls.Scripting;Component/Themes/ScriptTextualIndicator.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Tech.Tevux.Dashboards.Controls.Scripting;Component/Themes/ScriptNumericIndicator.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/Tech.Tevux.Dashboards.Controls.Scripting;Component/Themes/ScriptNud.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Tech.Tevux.Dashboards.Controls.Scripting;Component/Themes/ScriptOutput.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

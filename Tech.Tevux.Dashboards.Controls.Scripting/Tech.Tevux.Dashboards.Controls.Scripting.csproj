@@ -40,17 +40,6 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Themes\ScriptNud.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\ScriptNumericIndicator.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Themes\ScriptTextualIndicator.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Themes\CSharpScriptButton.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
@@ -62,11 +51,6 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Code\ScriptNumericIndicator\TemplateProperties\" />
-    <Folder Include="Code\ScriptTextualIndicator\TemplateProperties\" />
-  </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" Pack="True" PackagePath="\" />
     <None Include="Resources\tevux-logo-symbol.png" Pack="True" PackagePath="\" />
