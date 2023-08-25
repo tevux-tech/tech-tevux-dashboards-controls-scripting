@@ -6,9 +6,10 @@ namespace Tech.Tevux.Dashboards.Controls;
 
 [HideExposedOption(nameof(Alignment))]
 [HideExposedOption(nameof(Caption))]
-[Category("Scripting")]
+[Category("General")]
 [DisplayName("Script output")]
 public partial class ScriptOutput : ControlBase {
+    private readonly ISharedLibraryMessagingProvider _interLibraryMessenger;
     private readonly StringBuilder _textBuilder = new();
     private bool _isDisposed;
     private TextBox? _textBox;
@@ -18,11 +19,13 @@ public partial class ScriptOutput : ControlBase {
     }
 
     public ScriptOutput() {
+        _interLibraryMessenger = ScriptingLibrary.Instance.GlobalMessenger;
+
         HandleContextMenuClickCommand = new DelegateCommand<string>((parameter) => {
             switch (parameter) {
                 case "clear":
                     _textBuilder.Clear();
-                    Caption = _textBuilder.ToString();
+                    OutputText = _textBuilder.ToString();
                     break;
             }
         });
@@ -40,15 +43,18 @@ public partial class ScriptOutput : ControlBase {
         Reconfigure();
     }
 
-    public void Reconfigure() {
-        MyLibrary.Instance.GlobalMessenger.Unregister(this);
-        MyLibrary.Instance.GlobalMessenger.Register<SetValueMessage>(this, Id, HandleSetValueMessage);
+    public override void Reconfigure() {
+        base.Reconfigure();
+
+        _interLibraryMessenger.Unregister(this);
+        _interLibraryMessenger.Register<SetValueMessage>(this, Id, HandleSetValueMessage);
     }
 
     protected override void Dispose(bool isCalledManually) {
         if (_isDisposed == false) {
             if (isCalledManually) {
                 // Free managed resources here.
+                _interLibraryMessenger.Unregister(this);
             }
 
             // Free unmanaged resources here and set large fields to null.
@@ -63,7 +69,7 @@ public partial class ScriptOutput : ControlBase {
             _textBuilder.Remove(0, _textBuilder.Length - 8000);
         }
         Dispatcher.Invoke(() => {
-            Caption = _textBuilder.ToString();
+            OutputText = _textBuilder.ToString();
             _textBox?.ScrollToEnd();
         });
     }

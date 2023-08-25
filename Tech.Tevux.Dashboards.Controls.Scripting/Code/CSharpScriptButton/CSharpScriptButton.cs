@@ -1,11 +1,8 @@
-﻿using NLog;
-
-namespace Tech.Tevux.Dashboards.Controls;
+﻿namespace Tech.Tevux.Dashboards.Controls;
 
 [Category("General")]
-[DisplayName("C# script button")]
+[DisplayName("Script button (C#)")]
 public partial class CSharpScriptButton : CSharpScriptControlBase {
-    private static readonly Logger _log = LogManager.GetCurrentClassLogger();
     private readonly CancellationTokenSource _globalCts = new();
     private bool _isDisposed;
 
@@ -20,8 +17,8 @@ public partial class CSharpScriptButton : CSharpScriptControlBase {
     public override void OnApplyTemplate() {
         base.OnApplyTemplate();
 
-        AssemblyLoadContext = MyLibrary.Instance.AssemblyLoadContext;
-        ScriptContext = (ScriptContextBase)Activator.CreateInstance(typeof(ScriptContext))!;
+        AssemblyLoadContext = ScriptingLibrary.Instance.AssemblyLoadContext;
+        ScriptContext = new ScriptContext();
     }
 
     protected override void Dispose(bool isCalledManually) {
