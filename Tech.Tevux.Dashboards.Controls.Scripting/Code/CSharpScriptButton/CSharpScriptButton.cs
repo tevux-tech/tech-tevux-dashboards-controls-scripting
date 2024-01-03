@@ -1,8 +1,12 @@
-﻿namespace Tech.Tevux.Dashboards.Controls;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Tech.Tevux.Dashboards.Controls;
 
 [Category("General")]
 [DisplayName("Script button (C#)")]
 public partial class CSharpScriptButton : CSharpScriptControlBase {
+    
+    [SuppressMessage("Usage", "CA2213:Disposable fields should be disposed",Justification = "https://stackoverflow.com/questions/6960520/when-to-dispose-cancellationtokensource")] 
     private readonly CancellationTokenSource _globalCts = new();
     private bool _isDisposed;
 
